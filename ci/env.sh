@@ -144,7 +144,8 @@ exec_hooks $script_dir/ext/pre_env.d
 # image registry org for publishing stack
 if [ -z "$IMAGE_REGISTRY_ORG" ]
 then
-    export IMAGE_REGISTRY_ORG=myorg
+    echo "Error: Environment variable 'IMAGE_REGISTRY_ORG' is not set."
+    exit 1
 fi
 
 # image registry for publishing stack
