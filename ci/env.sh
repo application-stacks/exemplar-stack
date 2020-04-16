@@ -141,15 +141,11 @@ logged() {
 #expose an extension point for running before main 'env' processing
 exec_hooks $script_dir/ext/pre_env.d
 
-#this is the default list of repos that we need to build index for
-if [ -z "$REPO_LIST" ]; then
-    export REPO_LIST="experimental incubator stable"
-fi
-
 # image registry org for publishing stack
 if [ -z "$IMAGE_REGISTRY_ORG" ]
 then
-    export IMAGE_REGISTRY_ORG=appsody
+    echo "Error: Environment variable 'IMAGE_REGISTRY_ORG' is not set."
+    exit 1
 fi
 
 # image registry for publishing stack
