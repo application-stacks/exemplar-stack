@@ -12,12 +12,6 @@ then
     fi
 fi
 
-if ! yq --version > /dev/null 2>&1
-then
-    echo "Error: 'yq' command is not installed or not available on the path"
-    exit_script=1
-fi
-
 if [ "$CODEWIND_INDEX" == "true" ]
 then
     if ! python3 --version > /dev/null 2>&1
