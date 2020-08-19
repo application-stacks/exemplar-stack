@@ -12,7 +12,6 @@ mkdir -p $base_dir/ci/build/index-src
 # url for downloading released assets
 release_url="https://github.com/$TRAVIS_REPO_SLUG/releases/download"
 
-# iterate over each repo
 # iterate over each stack
 for stack in $(ls $base_dir/*/stack.yaml 2>/dev/null | sort)
 do
@@ -43,12 +42,17 @@ do
             # Resolve external URL for local / github release
             sed -e "s|${RELEASE_URL}/.*/|file://$assets_dir/|" $index_file_v2_temp > $index_file_local_v2
             if [ "${BUILD_RELEASE}" == "true" ]; then
-                sed -e "s|${RELEASE_URL}/.*/|${RELEASE_URL}/${RELEASE_NAME}/|" $index_file_v2_temp > $index_file_v2
+	            if [ ! -z $RELEASE_NAME ]; then
+    	            sed -e "s|${RELEASE_URL}/.*/|${RELEASE_URL}/${RELEASE_NAME}/|" $index_file_v2_temp > $index_file_v2
+    	        fi
             fi
             rm -f $base_dir/ci/build/index-src/*.yaml
             sed -e "s|${RELEASE_URL}/.*/|{{EXTERNAL_URL}}/|" $index_file_v2_temp > $nginx_file
             rm -f $index_file_v2_temp
-       fi
+        fi
+        
+        popd
+
     else
         echo "SKIPPING: $repo_dir"
     fi
