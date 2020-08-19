@@ -14,7 +14,11 @@ then
 fi
 if [ -z "${IMAGE_REGISTRY_ORG}" ]
 then
+<<<<<<< Upstream, based on origin/master
     export IMAGE_REGISTRY_ORG="ICP4A"
+=======
+    export IMAGE_REGISTRY_ORG="icpa"
+>>>>>>> 60c8e4b Update to allow building of a released version of the stack
 fi
 if [ -z "${LATEST_RELEASE}" ]; then
     export LATEST_RELEASE=true

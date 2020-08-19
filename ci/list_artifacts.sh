@@ -17,4 +17,8 @@ do
 	echo "-------------------------------"
 	cat $index
 	echo "-------------------------------"
+<<<<<<< Upstream, based on origin/master
 done
+=======
+done
+>>>>>>> 60c8e4b Update to allow building of a released version of the stack
