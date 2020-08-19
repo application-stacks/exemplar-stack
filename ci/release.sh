@@ -13,7 +13,7 @@ exec_hooks $script_dir/ext/pre_release.d
 # iterate over each asset
 for asset in $assets_dir/*
 do
-    if [[ $asset != *-local.yaml ]]
+    if [[ $asset != *-local.yaml && $asset != *-local.json ]]
     then
         echo "Releasing: $asset"
         mv $asset $release_dir
